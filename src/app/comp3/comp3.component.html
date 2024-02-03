@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card">
+       <h2 class="head" style="margin-top: 10px;" >BLOGS DETAILS</h2>
+       <form [formGroup]="BlogsModel">
+       <label class="form-label">Enter The subject</label> 
+       <input formControlName="subject" type="text" class="form-control" >
+       <label class="form-label">Enter The Description</label> 
+       <textarea formControlName="description" class="form-control" ></textarea>
+       <label class="form-label">Upload Image</label> 
+       <div style="display: flex;">
+      <input  #myfile type="file" (change)="chooseFile($event)"  class="form-control"/>
+      <button style="margin: 5px;" (click)="resetfile()" title="remove file" class="btn btn-danger">X</button>
+    </div>
+    <div style="text-align: center;margin: 10px;">
+        <button (click)="submitData()" class="btn btn-success">submit</button>
+    </div>
+       
+       
+            
+        
+     
+     
+      
+    </form>
+
+    </div>
+</div>
