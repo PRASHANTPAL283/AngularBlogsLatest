@@ -22,8 +22,6 @@ chooseFile(event:any){
 
 }
 resetfile(){
-
-  
   this.myfile.nativeElement.value="";
   this.formData.set("file",'');
  }

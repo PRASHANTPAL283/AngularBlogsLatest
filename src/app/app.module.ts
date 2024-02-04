@@ -7,6 +7,7 @@ import { Comp1Component } from './comp1/comp1.component';
 import { Comp2Component } from './comp2/comp2.component';
 import { Comp3Component } from './comp3/comp3.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DescriptionLimiterPipe } from './description-limiter.pipe';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     Comp1Component,
     Comp2Component,
     Comp3Component,
+    DescriptionLimiterPipe,
    
   ],
   imports: [

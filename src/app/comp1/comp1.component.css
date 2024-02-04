@@ -1,0 +1,18 @@
+.division{
+    margin-top: 10px;
+    width:100%;
+}
+.card-img-top{
+    width:350px;
+    height:300px;
+    margin: auto;
+   
+    margin-top: 10px;
+}
+.card-body{
+    margin-left: 10px;
+}
+button{
+    padding: 10px;
+    margin: 10px;
+}
