@@ -33,7 +33,7 @@ submitData(){
         
       },
       error:(err:any)=>{
-        alert("error occurred while posting record");
+        console.log(JSON.parse(err.message))
       },
       complete:()=>{
         alert("blog posted successfully");
@@ -61,7 +61,7 @@ submitData(){
           
         },
         error:(err:any)=>{
-          alert("error occurred while posting record");
+          alert(err.message);
         },
         complete:()=>{
           alert("blog posted successfully");

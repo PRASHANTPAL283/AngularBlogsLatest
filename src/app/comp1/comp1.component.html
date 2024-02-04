@@ -1,7 +1,7 @@
 
 <div class="container" style="width: 100%;">
     <div style="width: 100%;" class="row">
-        <div style="margin: 10px;width:399px;cursor: pointer;"  *ngFor="let items of allblogs" class="col-3">
+        <div    *ngFor="let items of allblogs" class="col-3 sw">
         
             <div (click)="gotoBlogs(items.blogId)" style="box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  class="card">
                 <img [src]="apiUrl+items.imageUrl" class="card-img-top" alt="...">

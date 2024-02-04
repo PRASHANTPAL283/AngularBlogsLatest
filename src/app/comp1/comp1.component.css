@@ -9,6 +9,14 @@
    
     margin-top: 10px;
 }
+.sw{
+    margin: 10px;width:412px;cursor: pointer;
+}
+.card:hover{
+    background-color: rgb(249, 248, 248);
+}
+
+
 .card-body{
     margin-left: 10px;
 }
