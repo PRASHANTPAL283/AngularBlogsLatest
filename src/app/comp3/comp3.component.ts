@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DataservicesService } from '../dataservices.service';
 
 @Component({
   selector: 'app-comp3',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./comp3.component.css']
 })
 export class Comp3Component {
-constructor(private fb:FormBuilder){
+constructor(private fb:FormBuilder, public service:DataservicesService){
 }
 formData:FormData=new FormData();
 
@@ -18,12 +19,62 @@ chooseFile(event:any){
   this.formData.set("file",event.target.files[0]);
   console.log(this.formData)
 
+
 }
 resetfile(){
+
+  
   this.myfile.nativeElement.value="";
-}
+  this.formData.set("file",'');
+ }
 submitData(){
-  console.log(this.BlogsModel?.value);
+  if(this.formData.get("file")===''|| this.formData.get("file")===undefined || this.formData.get("file")===null){
+    this.service.postNewBlog(this.BlogsModel?.value).subscribe({ 
+      next:(val:any)=>{
+        console.log(val)
+        
+      },
+      error:(err:any)=>{
+        alert("error occurred while posting record");
+      },
+      complete:()=>{
+        alert("blog posted successfully");
+        this.BlogsModel.reset();
+        this.resetfile();
+      }
+    })}
+  else{
+  this.service.addImage(this.formData)
+  .subscribe({
+    next:(val:any)=>{
+      this.BlogsModel.patchValue({
+        imageId:val.ImageId,
+        imageUrl:val.downloadURL
+      })
+    },
+    error:(err:any)=>{
+      console.log(err.message)
+    },
+    complete:()=>{
+      console.log("file added successfully");
+      this.service.postNewBlog(this.BlogsModel?.value).subscribe({ 
+        next:(val:any)=>{
+          console.log(val)
+          
+        },
+        error:(err:any)=>{
+          alert("error occurred while posting record");
+        },
+        complete:()=>{
+          alert("blog posted successfully");
+          this.BlogsModel.reset();
+          this.resetfile();
+        }
+      })
+    }
+  })
+}
+  
 }
 
 
