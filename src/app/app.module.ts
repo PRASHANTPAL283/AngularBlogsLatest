@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DescriptionLimiterPipe } from './description-limiter.pipe';
 import { BlogDetailsCompComponent } from './blog-details-comp/blog-details-comp.component';
 import { DataInterceptorInterceptor } from './data-interceptor.interceptor';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { RegisterComponentComponent } from './register-component/register-component.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { DataInterceptorInterceptor } from './data-interceptor.interceptor';
     Comp3Component,
     DescriptionLimiterPipe,
     BlogDetailsCompComponent,
+    LoginComponentComponent,
+    RegisterComponentComponent,
    
   ],
   imports: [

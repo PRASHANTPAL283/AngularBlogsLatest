@@ -11,6 +11,14 @@
     </li>
    
   </ul>
+  <ul class="nav">
+    <li class="nav-item">
+      <a routerLink="login" routerLinkActive #a="routerLinkActive" [ngClass]="a.isActive==true ?'nav-link active':'nav-link'" >Login</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="register" routerLinkActive #a="routerLinkActive" [ngClass]="a.isActive==true ?'nav-link active':'nav-link'" >Register</a>
+    </li>
+  </ul>
  
 </nav>
 

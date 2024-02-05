@@ -4,6 +4,8 @@ import { Comp1Component } from './comp1/comp1.component';
 import { Comp2Component } from './comp2/comp2.component';
 import { Comp3Component } from './comp3/comp3.component';
 import { BlogDetailsCompComponent } from './blog-details-comp/blog-details-comp.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
+import { RegisterComponentComponent } from './register-component/register-component.component';
 
 const routes: Routes = [
   {path:'blogs',component:Comp1Component},
@@ -11,6 +13,8 @@ const routes: Routes = [
   {path:'createBlogs',component:Comp3Component},
   {path:'details',component:BlogDetailsCompComponent},
   {path:'details/:id',component:BlogDetailsCompComponent},
+  {path:'login',component:LoginComponentComponent},
+  {path:'register',component:RegisterComponentComponent},
   {path:'',redirectTo:'blogs',pathMatch:'full'}
   
 ];
