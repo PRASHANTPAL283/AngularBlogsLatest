@@ -8,6 +8,7 @@ import { Comp2Component } from './comp2/comp2.component';
 import { Comp3Component } from './comp3/comp3.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DescriptionLimiterPipe } from './description-limiter.pipe';
+import { BlogDetailsCompComponent } from './blog-details-comp/blog-details-comp.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { DescriptionLimiterPipe } from './description-limiter.pipe';
     Comp2Component,
     Comp3Component,
     DescriptionLimiterPipe,
+    BlogDetailsCompComponent,
    
   ],
   imports: [

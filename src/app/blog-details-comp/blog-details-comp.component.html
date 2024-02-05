@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="card mb-3">
+        <img [src]="apiUrl+BlogDetails.imageUrl" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{BlogDetails.subject}}</h5>
+          <p class="card-text">{{BlogDetails.description}}</p>
+
+          <p style="color: rgb(43, 38, 38);" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="btnstyle">
+            <button class="btn btn-success">Like [1]</button>
+            <button class="btn btn-success">Comments [4]</button>
+        </div>
+      </div>
+</div>

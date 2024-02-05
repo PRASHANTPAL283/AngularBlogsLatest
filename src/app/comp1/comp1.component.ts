@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataservicesService } from '../dataservices.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comp1',
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class Comp1Component {
   apiUrl=environment.apiUrl;
 
-  constructor(public service:DataservicesService){
+  constructor(public service:DataservicesService,public router:Router){
 
   }
   allblogs:any=[]
@@ -32,6 +33,7 @@ export class Comp1Component {
 
   gotoBlogs(id:any){
     console.log(id);
+    this.router.navigate(['details',id]);
   }
   
 

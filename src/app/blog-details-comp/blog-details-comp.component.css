@@ -1,0 +1,12 @@
+.btnstyle{
+    display: flex;
+}
+.btn{
+    margin: 10px;
+}
+.card-img-top{
+    height:550px;
+}
+.btn:hover{
+    background-color:dark green;
+}
