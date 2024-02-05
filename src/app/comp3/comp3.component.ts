@@ -61,7 +61,7 @@ submitData(){
           
         },
         error:(err:any)=>{
-          alert(err.message);
+          console.log(JSON.parse(err.message));
         },
         complete:()=>{
           alert("blog posted successfully");
