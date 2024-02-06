@@ -1,1 +1,22 @@
-<p>login-component works!</p>
+<div class="card">
+    <form [formGroup]="loginModel">
+        <label class="lable">Enter The Username</label>
+        <div style="text-align: center;">
+<input [class.is-invalid]="getName()?.invalid && getName()?.touched"  formControlName="username"  type="text" class="form-control"/>
+
+<small *ngIf="getName()?.errors?.['required'] && getName()?.touched" style="color:red; font-size: 16px;">username is mandatory</small>
+</div>
+
+<label class="lable">Enter The Password</label>
+<div style="text-align: center;">
+<input [class.is-invalid]="getPass()?.invalid && getPass()?.touched" type="password" formControlName="password" class="form-control">
+<small *ngIf="getPass()?.errors?.['required'] && getPass()?.touched" style="color:red; font-size: 16px;">Password is mandatory</small>
+</div>
+<div style="text-align: center;">
+    <button (click)=" doLogin()" class="btn" class="btn btn-success">Login</button>
+</div>
+
+    </form>
+
+
+</div>
