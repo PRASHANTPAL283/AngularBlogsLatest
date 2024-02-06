@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_upload, delete_user_url, user_add_url } from './ContantsApi';
+import { all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_upload, delete_user_url, login_user_url, user_add_url } from './ContantsApi';
 import { catchError, throwError } from 'rxjs';
 
 
@@ -32,6 +32,8 @@ export class DataservicesService {
   }
 
   public addImage(data:any){
+    
+    
     return this.http.post(blog_image_upload,data).pipe(catchError(this.handleError));
   }
 
@@ -46,6 +48,11 @@ export class DataservicesService {
   public deleteUserById(id:any){
     let url=delete_user_url+"/"+`${id}`;
     return this.http.get(url).pipe(catchError(this.handleError))
+  }
+
+  public doLoginUser(data:any){
+    return this.http.post(login_user_url,data)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

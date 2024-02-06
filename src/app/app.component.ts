@@ -15,4 +15,16 @@ export class AppComponent {
     console.log(environment.production)
 
   }
+  ngOnInit(){
+    let user:any=sessionStorage.getItem("user");
+    let loginModel=JSON.parse(user);
+   
+
+    if(loginModel===null || loginModel===undefined || loginModel===''){
+      let data:any={username:"guest",password:"@EZAKMi90"}
+      data=JSON.stringify(data);
+      sessionStorage.setItem("user",data);
+    }
+    
+  }
 }

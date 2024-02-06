@@ -32,7 +32,21 @@ export class LoginComponentComponent {
       this.loginModel.markAllAsTouched();
     }
     else{
-      alert("clearred")
+     this.service.doLoginUser(this.loginModel?.value).subscribe({ 
+        next:(val:any)=>{
+          let result:any={username:val.username,password:this.getPass()?.value}
+          result=JSON.stringify(result);
+          sessionStorage.setItem("user",result);
+        },
+        error:(err:any)=>{
+          console.log(err)
+        },
+        complete:()=>{
+          alert("login successfully")
+
+          this.loginModel.reset();
+        }
+      })
     }
   }
 

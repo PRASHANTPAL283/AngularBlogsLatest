@@ -13,14 +13,18 @@ export class DataInterceptorInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let user:any=sessionStorage.getItem("userDetails");
+    let user:any=sessionStorage.getItem("user");
     let loginModel=JSON.parse(user);
+  
 
     let authorizationData = 'Basic ' + btoa(loginModel.username + ':' + loginModel.password);
     const req=request.clone({
        setHeaders:{
          
-         "Authorization":authorizationData
+         "Authorization":authorizationData,
+        
+         
+         
        }
      })
      return next.handle(req);
