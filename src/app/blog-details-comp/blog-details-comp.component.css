@@ -4,8 +4,15 @@
 .btn{
     margin: 10px;
 }
+.card{
+    background-color: ghostwhite;
+}
 .card-img-top{
+    border-radius: 25px;
     height:550px;
+    width:550px;
+    margin: auto;
+    padding: 16px;
 }
 .btn:hover{
     background-color:dark green;

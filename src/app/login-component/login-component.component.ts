@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataservicesService } from '../dataservices.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-component',
@@ -9,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponentComponent {
 
-  constructor(public service:DataservicesService, public fb:FormBuilder){
+  constructor(public service:DataservicesService, public fb:FormBuilder, public router:Router){
 
   }
   ngOnInit(){
@@ -43,8 +44,10 @@ export class LoginComponentComponent {
         },
         complete:()=>{
           alert("login successfully")
+          
 
           this.loginModel.reset();
+          this.router.navigate(['blogs'])
         }
       })
     }

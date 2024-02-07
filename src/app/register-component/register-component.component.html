@@ -1,1 +1,35 @@
-<p>register-component works!</p>
+
+    <div class="card">
+        <form [formGroup]="registerModel">
+            <div>
+            <label  class="lable">Enter The Username</label>
+            <input class="form-control" type="text" formControlName="username">
+        </div>
+        <div>
+            <label  class="lable">Enter The Email</label>
+            <input class="form-control" type="text" formControlName="email">
+        </div>
+        <div>
+            <label  class="lable">Enter The PhoneNumber</label>
+            <input  class="form-control" type="number" formControlName="phoneNumber">
+        </div>
+        <div>
+            <label  class="lable">Enter The Password</label>
+            <input  class="form-control" type="password" formControlName="password">
+        </div>
+        <div>
+            <label  class="lable">Confirm The Password</label>
+            <input  class="form-control" type="password" formControlName="password2">
+        </div>
+        <div>
+            <button (click)="addUser()" class="btn btn-success">Register</button>
+        </div>
+        </form>
+        
+    </div>
+
+    <button (click)="myFunction()">Show Snackbar</button>
+
+<!-- The actual snackbar -->
+<div #snackBar id="snackbar">{{message}}</div>
+
