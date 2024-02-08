@@ -5,7 +5,14 @@
           <h5 class="card-title">{{BlogDetails.subject}}</h5>
           <p class="card-text">{{BlogDetails.description}}</p>
 
-          <p style="color: rgb(43, 38, 38);" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <div style="display: flex;">
+            <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Last Updated {{BlogDetails.lastUpdated|datePipeValuesConverter}}</small></p>
+            <p style="color: rgb(43, 38, 38); font-weight: 600;margin-left: 25px;" class="card-text"><small class="text-muted">Published On: {{ BlogDetails.date || 'M/d/yy, h:mm a'  }}</small></p>
+
+          </div>
+         
+         
+          <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Posted By: {{BlogDetails.userModel.username|titlecase}}</small></p>
         </div>
         <div class="btnstyle">
             <button class="btn btn-success">Like [1]</button>

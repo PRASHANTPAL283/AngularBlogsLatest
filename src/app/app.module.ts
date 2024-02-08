@@ -12,6 +12,7 @@ import { BlogDetailsCompComponent } from './blog-details-comp/blog-details-comp.
 import { DataInterceptorInterceptor } from './data-interceptor.interceptor';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
+import { DatePipeValuesConverterPipe } from './date-pipe-values-converter.pipe';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { RegisterComponentComponent } from './register-component/register-compon
     BlogDetailsCompComponent,
     LoginComponentComponent,
     RegisterComponentComponent,
+    DatePipeValuesConverterPipe,
    
   ],
   imports: [

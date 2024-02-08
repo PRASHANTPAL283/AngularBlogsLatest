@@ -25,6 +25,7 @@ export class BlogDetailsCompComponent {
       this.service.getBlogById(id).subscribe({
         next:(val:any)=>{
           this.BlogDetails=val;
+          this.convertdate();
           console.log(this.BlogDetails);
         },
         error:(err:any)=>{
@@ -35,6 +36,9 @@ export class BlogDetailsCompComponent {
       
      
     })
+  }
+  convertdate(){
+    this.BlogDetails.date=new Date(this.BlogDetails.date);
   }
 
 

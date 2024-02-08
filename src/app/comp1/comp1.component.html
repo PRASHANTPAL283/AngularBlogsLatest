@@ -8,7 +8,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{items.subject}}</h5>
                   <p class="card-text">{{items.description|descriptionLimiter}}</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <p style="font-weight: 600;" class="card-text"><small class="text-muted">Last Updated {{items.lastUpdated|datePipeValuesConverter}}</small></p>
+                  <p style="font-weight: 600;" class="card-text"><small class="text-muted">Posted By: {{items.userModel.username|titlecase}}</small></p>
                   
                 </div>
               </div>

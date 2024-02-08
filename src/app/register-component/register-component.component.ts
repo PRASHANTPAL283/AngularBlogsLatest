@@ -85,7 +85,38 @@ export class RegisterComponentComponent {
     setTimeout(() =>{  this.snackBar.nativeElement.className = ""; }, 4000);
   }
 
+  checkDate(){
+    let date=new Date("2024-02-07 20:00:41.417");
+     let datenew=new Date();
+    let minutes:any=null;
+    let hours:any=null;
+    let days:any=null;
+    let seconds:any=null;
+    let months:any=null;
+    let years:any=null;
+    console.log(datenew.getTime()-date.getTime())
+    let diff:any=datenew.getTime()-date.getTime();
+    days=Math.round(diff/(1000 * 3600 * 24));
+    console.log(days);
+    diff=diff%(1000 * 3600 * 24);
+    hours=Math.round(diff/(1000*3600));
+    console.log(hours);
+    diff=diff%(1000*3600);
+    minutes=Math.round(diff/60000);
+    console.log(minutes);
+    diff=diff%60000;
+    seconds=Math.round(diff/1000);
+    console.log(seconds)
+    
 
+
+
+    
   }
+    
+  }
+
+
+  
 
 
