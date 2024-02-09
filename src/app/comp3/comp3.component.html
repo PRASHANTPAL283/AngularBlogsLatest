@@ -11,9 +11,13 @@
       <input  #myfile type="file" (change)="chooseFile($event)"  class="form-control"/>
       <button style="margin: 10px;padding: auto;border-radius: 50%;" (click)="resetfile()" title="remove file" class="btn btn-primary">X</button>
     </div>
-    <div style="text-align: center;margin: 10px;">
-        <button (click)="submitData()" class="btn btn-success">submit</button>
+    <div *ngIf="imagePreviewUrl && imagePreviewUrl !== ''" style="margin: 10px; text-align: center;">
+        <img style="width:150px;height:150px;border-radius: 25px;" [src]="imagePreviewUrl">
+       
     </div>
+    <div style="text-align: center;">
+    <button (click)="adjustData()" class="btn btn-success">submit</button>
+</div>
        
        
             

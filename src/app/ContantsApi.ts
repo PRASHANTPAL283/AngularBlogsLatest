@@ -11,4 +11,5 @@ export const user_add_url=environment.apiUrl+"/addUser"
 export const all_users_url=environment.apiUrl+"/allusers"
 export const delete_user_url=environment.apiUrl+"/deleteUserById"
 export const login_user_url=environment.apiUrl+"/doLogin";
+export const get_blogs_by_user=environment.apiUrl+"/getBlogsByUser";
 

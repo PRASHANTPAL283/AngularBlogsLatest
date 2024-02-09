@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <table class="table">
-        <caption>List of users</caption>
+       
         <thead>
           <tr>
             <th scope="col">Sno.</th>
@@ -12,24 +12,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let items of allblogs; let i=index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{items.subject}}</td>
+            <td>{{items.description|descriptionLimiter}}</td>
+            
+            <td>{{items.imageUrl}}</td>
+            <td><button (click)="updateBlog(items)" class="btn btn-success">Update</button></td>
+            <td><button (click)="deleteBlogById(items.blogId)" class="btn btn-danger">Delete</button></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          
         </tbody>
     </table>
+  </div>
+
+  <div *ngIf="allblogs.length==0" style="text-align: center;">
+    <p style="font-size: 20px;font-weight: 500;font-family: 'Times New Roman', Times, serif; color:green;">NO BLOGS YET PLEASE POST BLOGS::</p>
   </div>

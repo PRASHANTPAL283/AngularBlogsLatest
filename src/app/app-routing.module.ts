@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'blogs',component:Comp1Component},
   {path:'myblogs',component:Comp2Component},
   {path:'createBlogs',component:Comp3Component},
+  {path:'createBlogs/:data',component:Comp3Component},
   {path:'details',component:BlogDetailsCompComponent},
   {path:'details/:id',component:BlogDetailsCompComponent},
   {path:'login',component:LoginComponentComponent},
