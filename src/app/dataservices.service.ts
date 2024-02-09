@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_upload, delete_user_url, login_user_url, user_add_url } from './ContantsApi';
+import { all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_update, blog_image_upload, delete_user_url, login_user_url, user_add_url } from './ContantsApi';
 import { catchError, throwError } from 'rxjs';
 
 
@@ -35,6 +35,10 @@ export class DataservicesService {
     
     
     return this.http.post(blog_image_upload,data).pipe(catchError(this.handleError));
+  }
+  public updateImage(data:any, id:any){
+    let url=blog_image_update+"/"+`${id}`;
+    return this.http.post(url,id).pipe(catchError(this.handleError));
   }
 
   public addNewUser(data:any){
