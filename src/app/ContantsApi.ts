@@ -12,4 +12,8 @@ export const all_users_url=environment.apiUrl+"/allusers"
 export const delete_user_url=environment.apiUrl+"/deleteUserById"
 export const login_user_url=environment.apiUrl+"/doLogin";
 export const get_blogs_by_user=environment.apiUrl+"/getBlogsByUser";
+export const get_all_comments_blog_id=environment.apiUrl+"/allcomments";
+export const do_post_comment=environment.apiUrl+"/doComment";
+export const do_like_post=environment.apiUrl+"/doLike";
+export const get_all_likes_blog=environment.apiUrl+"/getLikes";
 
