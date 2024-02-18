@@ -20,6 +20,22 @@ export class BlogDetailsCompComponent {
   CurrentUser:any;
 
   BlogDetails:any=null;
+  peoplesLikes:any=[];
+
+  getallPeoplesLikes(data:any){
+    
+    this.peoplesLikes=[];
+    data.forEach((val:any)=>{
+     
+      let i:any=0;
+     if(val.likeFlag==true){
+    
+      this.peoplesLikes.push(val.userModel.username)
+      i=i+1;
+     }
+    
+    })
+  }
 
   commentModel=this.fb.group({ 
     cid:[''],
@@ -57,7 +73,7 @@ export class BlogDetailsCompComponent {
   deleteCommentById(id:any){
     this.service.deleteCommentById(id).subscribe({ 
       next:(val:any)=>{
-        console.log(val)
+        
       },
       error:(err:any)=>{
         alert('error occurred');
@@ -78,7 +94,7 @@ export class BlogDetailsCompComponent {
         next:(val:any)=>{
           this.BlogDetails=val;
           this.convertdate();
-          console.log(this.BlogDetails);
+         
         },
         error:(err:any)=>{
           console.log(JSON.parse(err.message));
@@ -109,11 +125,15 @@ export class BlogDetailsCompComponent {
     this.service.getalllikes(id).subscribe({ 
       next:(val:any)=>{
         this.alllikes=val;
-        console.log(this.alllikes)
+       
+        
 
       },
       complete:()=>{
+        
         this.getallLikesCount();
+        this.getallPeoplesLikes(this.alllikes);
+       
       }
     })
   }
@@ -135,7 +155,7 @@ export class BlogDetailsCompComponent {
     this.service.getallcomments(id).subscribe({ 
       next:(val:any)=>{
         this.allcomments=val;
-        console.log(this.allcomments)
+        
 
       }
     })
@@ -160,7 +180,7 @@ export class BlogDetailsCompComponent {
     postData.cid=cide
     this.service.doCommentPost(postData).subscribe({ 
       next:(val:any)=>{
-        console.log(val);
+       
       },
       error:(err:any)=>{
         console.log(err.message);
@@ -209,7 +229,7 @@ return flag;
     likeModel.userModel=user;
     this.service.doLikePost(likeModel).subscribe({ 
       next:(val:any)=>{
-        console.log(val);
+        
         flag=val.likeFlag;
 
       },
@@ -223,6 +243,7 @@ return flag;
         alert("you successfully unlike a blog");
       }
         this.getalllikes(this.BlogDetails.blogId);
+       
        
       }
     })

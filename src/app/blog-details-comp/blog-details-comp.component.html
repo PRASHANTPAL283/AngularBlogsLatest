@@ -1,9 +1,16 @@
 <div class="container">
     <div class="card mb-3">
+      <div style="display: flex;" >
         <img [src]="apiUrl+BlogDetails?.imageUrl" class="card-img-top" alt="...">
+        <ul    class="list-group" style="padding: 16px;">
+          <li class="list-group-item">Like By Peoples: ❤️</li>
+          <li *ngFor="let items of peoplesLikes" class="list-group-item">{{items | titlecase }} 👍</li>
+          
+        </ul>
+      </div>
         <div class="card-body">
           <h5 class="card-title">{{BlogDetails?.subject}}</h5>
-          <p class="card-text">{{BlogDetails?.description}}</p>
+          <pre class="card-text">{{BlogDetails?.description}}</pre>
 
           <div style="display: flex;">
             <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Last Updated {{BlogDetails?.lastUpdated|datePipeValuesConverter}}</small></p>
@@ -19,6 +26,9 @@
             <button (click)="dopostLike()"  [ngClass]="checkIfLikeOrNot()==true?'btn btn-success':'btn btn-primary'">Like [{{allLikesCount}}]</button>
             <button class="btn btn-success">Comments [{{allcomments.length}}]</button>
         </div>
+      </div>
+      <div>
+        
       </div>
       <form [formGroup]="commentModel">
       <div class="card">
@@ -43,12 +53,12 @@
       <div class="card1">
       
         <div style="display: flex;">
-        <p class="userpara">Posted By : {{items.userModel?.username | titlecase}} | Date:{{items?.date ||'MMM d, y, h:mm:ss a'}}</p>
+        <p class="userpara">Posted By : {{items.userModel?.username | titlecase}} | Date:{{items?.date || 'MMM d, y, h:mm:ss a'}}</p>
         <button *ngIf="CurrentUser==items.userModel?.username" (click)="changeValuecomment(items?.cid,items?.description)" class="btn1" class="btn btn-success">edit</button>
         <button  *ngIf="CurrentUser==items.userModel?.username" (click)="deleteCommentById(items?.cid)" class="btn1" class="btn btn-danger">delete</button>
       </div>
         <div class="commentCard">
-          <p>{{items.description}}</p>
+          <pre>{{items.description}}</pre>
         </div>
       </div>
      
