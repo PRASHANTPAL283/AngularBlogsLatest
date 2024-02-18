@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_update, blog_image_upload, delete_user_url, get_blogs_by_user, login_user_url, user_add_url } from './ContantsApi';
+import { all_likes_count, all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_update, blog_image_upload, delete_comment_by_id, delete_user_url, do_like_post, do_post_comment, get_all_comments_blog_id, get_all_likes_blog, get_blogs_by_user, login_user_url, user_add_url } from './ContantsApi';
 import { catchError, throwError } from 'rxjs';
 
 
@@ -62,6 +62,34 @@ export class DataservicesService {
     return this.http.post(login_user_url,data)
     .pipe(catchError(this.handleError));
   }
+  public doLikePost(value:any){
+    return this.http.post(do_like_post,value).pipe(catchError(this.handleError));
+  }
+
+  public getalllikes(id:any){
+    let url=get_all_likes_blog+"/"+`${id}`;
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
+
+  public doCommentPost(data:any){
+    return this.http.post(do_post_comment,data).pipe(catchError(this.handleError));
+  }
+
+  public getallcomments(id:any){
+    let url=get_all_comments_blog_id+"/"+`${id}`;
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
+
+  public getallLikesCount(id:any){
+    let url=all_likes_count+"/"+`${id}`;
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
+
+  public deleteCommentById(id:any){
+    let url=delete_comment_by_id+"/"+`${id}`;
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
+  
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

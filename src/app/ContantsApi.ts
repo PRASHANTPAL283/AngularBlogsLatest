@@ -16,4 +16,6 @@ export const get_all_comments_blog_id=environment.apiUrl+"/allcomments";
 export const do_post_comment=environment.apiUrl+"/doComment";
 export const do_like_post=environment.apiUrl+"/doLike";
 export const get_all_likes_blog=environment.apiUrl+"/getLikes";
+export const all_likes_count=environment.apiUrl+"/getallLikesCount";
+export const delete_comment_by_id=environment.apiUrl+"/deleteCommentById";
 

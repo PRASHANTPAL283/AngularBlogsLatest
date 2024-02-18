@@ -1,22 +1,58 @@
 <div class="container">
     <div class="card mb-3">
-        <img [src]="apiUrl+BlogDetails.imageUrl" class="card-img-top" alt="...">
+        <img [src]="apiUrl+BlogDetails?.imageUrl" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{BlogDetails.subject}}</h5>
-          <p class="card-text">{{BlogDetails.description}}</p>
+          <h5 class="card-title">{{BlogDetails?.subject}}</h5>
+          <p class="card-text">{{BlogDetails?.description}}</p>
 
           <div style="display: flex;">
-            <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Last Updated {{BlogDetails.lastUpdated|datePipeValuesConverter}}</small></p>
-            <p style="color: rgb(43, 38, 38); font-weight: 600;margin-left: 25px;" class="card-text"><small class="text-muted">Published On: {{ BlogDetails.date || 'M/d/yy, h:mm a'  }}</small></p>
+            <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Last Updated {{BlogDetails?.lastUpdated|datePipeValuesConverter}}</small></p>
+            <p style="color: rgb(43, 38, 38); font-weight: 600;margin-left: 25px;" class="card-text"><small class="text-muted">Published On: {{ BlogDetails?.date || 'M/d/yy, h:mm a'  }}</small></p>
 
           </div>
          
          
-          <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Posted By: {{BlogDetails.userModel.username|titlecase}}</small></p>
+          <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Posted By: {{BlogDetails?.userModel?.username|titlecase}}</small></p>
         </div>
         <div class="btnstyle">
-            <button class="btn btn-success">Like [1]</button>
-            <button class="btn btn-success">Comments [4]</button>
+         
+            <button (click)="dopostLike()"  [ngClass]="checkIfLikeOrNot()==true?'btn btn-success':'btn btn-primary'">Like [{{allLikesCount}}]</button>
+            <button class="btn btn-success">Comments [{{allcomments.length}}]</button>
         </div>
       </div>
+      <form [formGroup]="commentModel">
+      <div class="card">
+      
+      <textarea [class.is-invalid]="getdesc()?.invalid && getdesc()?.touched"  formControlName="description" class="commentfield"  placeholder="comments your thoughts...">
+       </textarea>
+       <small *ngIf="getdesc()?.invalid && getdesc()?.touched" style="color:red;margin-left: 20px;">comments should not be blank ....</small>
+     
+   
+      <div style="text-align: right;">
+      
+        <button (click)="sendDetails()"  class="btn btn-success" >send</button>
+        <button   class="btn btn-danger">reset</button>
+      </div>
+     
+       
+
+    
+    </div>
+  </form>
+  <div *ngFor="let items of allcomments">
+      <div class="card1">
+      
+        <div style="display: flex;">
+        <p class="userpara">Posted By : {{items.userModel?.username | titlecase}} | Date:{{items?.date ||'MMM d, y, h:mm:ss a'}}</p>
+        <button *ngIf="CurrentUser==items.userModel?.username" (click)="changeValuecomment(items?.cid,items?.description)" class="btn1" class="btn btn-success">edit</button>
+        <button  *ngIf="CurrentUser==items.userModel?.username" (click)="deleteCommentById(items?.cid)" class="btn1" class="btn btn-danger">delete</button>
+      </div>
+        <div class="commentCard">
+          <p>{{items.description}}</p>
+        </div>
+      </div>
+     
+
+    </div>
 </div>
+

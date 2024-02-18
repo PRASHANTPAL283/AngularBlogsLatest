@@ -6,6 +6,49 @@
 }
 .card{
     background-color: ghostwhite;
+   
+}
+.card1{
+    background-color: ghostwhite;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    margin-top: 10px;
+
+
+}
+.btn1{
+    width:30px;
+    height:50px;
+    
+}
+
+.mybtn:hover{
+    color:black;
+    background-color: white;
+}
+.commentfield{
+    border: 1px solid skyblue;
+    margin: 10px;
+    padding: 16px;
+    border-radius: 20px;
+
+}
+.userpara{
+   
+    font-weight: 600;
+    margin: 13px;
+
+}
+.commentCard{
+   
+    padding: 10px;
+    background-color: rgb(51, 160, 200);
+   
+    font-weight: 600;
+    color:white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
 }
 .card-img-top{
     border-radius: 25px;
