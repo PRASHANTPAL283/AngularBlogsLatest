@@ -2,7 +2,7 @@
     <div class="card mb-3">
       <div style="display: flex;" >
         <img [src]="apiUrl+BlogDetails?.imageUrl" class="card-img-top" alt="...">
-        <ul    class="list-group" style="padding: 16px;">
+        <ul *ngIf="peoplesLikes.length!==0"   class="list-group" style="padding: 16px;">
           <li class="list-group-item">Like By Peoples: ❤️</li>
           <li *ngFor="let items of peoplesLikes" class="list-group-item">{{items | titlecase }} 👍</li>
           
