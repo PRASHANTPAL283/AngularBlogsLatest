@@ -14,7 +14,7 @@
 
           <div style="display: flex;">
             <p style="color: rgb(43, 38, 38); font-weight: 600;" class="card-text"><small class="text-muted">Last Updated {{BlogDetails?.lastUpdated|datePipeValuesConverter}}</small></p>
-            <p style="color: rgb(43, 38, 38); font-weight: 600;margin-left: 25px;" class="card-text"><small class="text-muted">Published On: {{ BlogDetails?.date || 'M/d/yy, h:mm a'  }}</small></p>
+            <p style="color: rgb(43, 38, 38); font-weight: 600;margin-left: 25px;" class="card-text"><small class="text-muted">Published On: {{  BlogDetails?.date | dateChangePipe }}</small></p>
 
           </div>
          
@@ -53,7 +53,7 @@
       <div class="card1">
       
         <div style="display: flex;">
-        <p class="userpara">Posted By : {{items.userModel?.username | titlecase}} | Date:{{items?.date || 'MMM d, y, h:mm:ss a'}}</p>
+        <p class="userpara">Posted By : {{items.userModel?.username | titlecase}} | Date:{{items?.date | dateChangePipe }}</p>
         <button *ngIf="CurrentUser==items.userModel?.username" (click)="changeValuecomment(items?.cid,items?.description)" class="btn1" class="btn btn-success">edit</button>
         <button  *ngIf="CurrentUser==items.userModel?.username" (click)="deleteCommentById(items?.cid)" class="btn1" class="btn btn-danger">delete</button>
       </div>
