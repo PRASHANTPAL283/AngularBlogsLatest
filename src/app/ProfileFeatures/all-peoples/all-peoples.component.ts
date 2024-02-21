@@ -15,7 +15,11 @@ export class AllPeoplesComponent {
   constructor(public service:DataservicesService){
 
   }
+  currentUser:any;
+  alluserdata:any=[]
   ngOnInit(){
+    this.currentUser=sessionStorage.getItem("user");
+    this.currentUser=JSON.parse(this.currentUser);
     this.getallusers();
   }
 
@@ -24,11 +28,12 @@ export class AllPeoplesComponent {
     this.service.getallusers().subscribe({ 
       next:(val:any)=>{
         this.allusers=val;
+        this.alluserdata=val;
         console.log(this.allusers)
       },
       complete:()=>{
         this.allusers=this.allusers.filter((val:any)=>{
-          return val.userId!=this.getuserId() && val.username!=="guest"
+          return val.username!=this.currentUser.username && val.username!=="guest"
         })
       }
     })
@@ -39,7 +44,7 @@ export class AllPeoplesComponent {
     let userId:any=null;
     let user:any=sessionStorage.getItem("user");
     user=JSON.parse(user);
-    this.allusers.forEach((val:any)=>{
+    this.alluserdata.forEach((val:any)=>{
       if(val.username===user.username){
         userId=val.userId;
       }
