@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="card">
+        <ul style="margin-left: auto;margin-right: auto;" class="nav nav-tabs">
+           
+            <li  class="nav-item ">
+              <a routerLink="friends" routerLinkActive #a="routerLinkActive" [ngClass]="a.isActive==true ? 'nav-link active1':'nav-link'"   >Friends</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="allpeoples" routerLinkActive #b="routerLinkActive" [ngClass]="b.isActive==true ? 'nav-link active1':'nav-link'" >All Peoples</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="follows" routerLinkActive #c="routerLinkActive" [ngClass]="c.isActive==true ? 'nav-link active1':'nav-link'" >Followers</a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="editprofile" routerLinkActive #d="routerLinkActive" [ngClass]="d.isActive==true ? 'nav-link active1':'nav-link'" >edit profile</a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="chats" routerLinkActive #e="routerLinkActive" [ngClass]="e.isActive==true ? 'nav-link active1':'nav-link'" >Chats</a>
+              </li>
+
+           
+          </ul>
+          <br>
+          <router-outlet></router-outlet>
+
+
+    </div>
+
+</div>

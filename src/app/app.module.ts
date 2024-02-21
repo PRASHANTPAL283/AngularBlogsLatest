@@ -14,6 +14,12 @@ import { LoginComponentComponent } from './login-component/login-component.compo
 import { RegisterComponentComponent } from './register-component/register-component.component';
 import { DatePipeValuesConverterPipe } from './date-pipe-values-converter.pipe';
 import { DateChangePipePipe } from './date-change-pipe.pipe';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FriendsComponent } from './ProfileFeatures/friends/friends.component';
+import { AllPeoplesComponent } from './ProfileFeatures/all-peoples/all-peoples.component';
+import { ChatsComponent } from './ProfileFeatures/chats/chats.component';
+import { FollowersComponent } from './ProfileFeatures/followers/followers.component';
+import { EditProfileComponent } from './ProfileFeatures/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -28,6 +34,12 @@ import { DateChangePipePipe } from './date-change-pipe.pipe';
     RegisterComponentComponent,
     DatePipeValuesConverterPipe,
     DateChangePipePipe,
+    UserProfileComponent,
+    FriendsComponent,
+    AllPeoplesComponent,
+    ChatsComponent,
+    FollowersComponent,
+    EditProfileComponent,
    
   ],
   imports: [
