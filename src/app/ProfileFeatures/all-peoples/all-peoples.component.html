@@ -8,8 +8,12 @@
                
                 <p>Username:{{items.username}}</p>
                 <p>Email:{{items?.email}}</p>
-                <button (click)="addFriend(items)" style="margin:10px;"  class="btn btn-primary">+addFriend</button>
-                <button style="margin:10px;" class="btn btn-primary">+follow</button>
+                <button *ngIf="validateFriendalreadyadded(items.userId)" (click)="addFriend(items)" style="margin:10px;"  class="btn btn-primary">+addFriend</button>
+                <button *ngIf="validateiffollowsalready(items.userId)" (click)="addFollow(items)" style="margin:10px;" class="btn btn-primary">+follow</button>
+                <button *ngIf="!validateFriendalreadyadded(items.userId)"  style="margin:10px;"  class="btn btn-success">alreadyFriend</button>
+                <button *ngIf="!validateiffollowsalready(items.userId)"  style="margin:10px;"  class="btn btn-success">alreadyFollows</button>
+               
+                
                 
            
                 
