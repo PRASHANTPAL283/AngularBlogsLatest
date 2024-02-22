@@ -1,1 +1,18 @@
-<p>friends works!</p>
+<div class="card">
+
+    <div class="row">
+        <div *ngFor="let items of allfriends" class="col">
+
+            <div  class="card1">
+                <img class="img1"  [src]="apiUrl+items.friendadded.imageUrl">
+               
+                <p>Username:{{items.friendadded.username}}</p>
+                <p>Email:{{items?.friendadded.email}}</p>
+                <button style="margin-top: 10px;" class="btn btn-danger">unfriend</button>
+              
+               </div>
+
+        </div>
+    </div>
+
+</div>
