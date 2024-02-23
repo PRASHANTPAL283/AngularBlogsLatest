@@ -53,6 +53,21 @@ export class FriendsComponent {
       }
     })
   }
+
+  unfriendRequest(id:any){
+    this.service.removeFriendById(id).subscribe({ 
+      next:(val:any)=>{
+        console.log(val)
+      },
+      error:(err:any)=>{
+        alert('error occurred while removing friend'+err.message);
+      },
+      complete:()=>{
+        this.getUserId();
+
+      }
+    })
+  }
   
 
 

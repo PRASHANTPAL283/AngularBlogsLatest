@@ -1,0 +1,38 @@
+.card{
+    width:96%;
+    height:auto;
+    border-radius: 20px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:auto;
+   
+    margin-top: 10px;
+    padding: 10px;
+}
+.card1{
+    width:300px;
+    height:300px;
+    border-radius: 20px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:auto;
+    margin-top: 10px;
+    text-align: center;
+}
+.img1{
+    width:150px;
+    height:150px;
+    border-radius: 20px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:auto;
+   
+    margin-top:3px;
+
+}
+p{
+    font-weight: 600;
+    
+    color:rgb(90, 87, 87);
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif;
+   
+   
+}

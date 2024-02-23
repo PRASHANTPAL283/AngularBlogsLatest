@@ -1,4 +1,8 @@
-<div class="card">
+
+
+    <div *ngIf="allfriends.length==0" style="text-align: center;">
+        <p>No friends yet please add friends!</p>
+    </div>
 
     <div class="row">
         <div *ngFor="let items of allfriends" class="col">
@@ -8,11 +12,11 @@
                
                 <p>Username:{{items.friendadded.username}}</p>
                 <p>Email:{{items?.friendadded.email}}</p>
-                <button style="margin-top: 10px;" class="btn btn-danger">unfriend</button>
+                <button (click)="unfriendRequest(items.friendId)" style="margin-top: 10px;" class="btn btn-danger">unfriend</button>
               
                </div>
 
         </div>
     </div>
 
-</div>
+

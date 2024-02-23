@@ -1,1 +1,18 @@
-<p>followers works!</p>
+<div *ngIf="allfollows.length==0" style="text-align: center;">
+    <p>No Follows yet please add friends!</p>
+</div>
+
+<div class="row">
+    <div *ngFor="let items of allfollows" class="col">
+
+        <div  class="card1">
+            <img class="img1"  [src]="apiUrl+items.followadded.imageUrl">
+           
+            <p>Username:{{items.followadded.username}}</p>
+            <p>Email:{{items?.followadded.email}}</p>
+            <button (click)="unfollowById(items.followId)"  style="margin-top: 10px;" class="btn btn-danger">unfollow</button>
+          
+           </div>
+
+    </div>
+</div>

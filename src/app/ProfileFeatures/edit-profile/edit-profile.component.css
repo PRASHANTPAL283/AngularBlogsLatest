@@ -1,0 +1,30 @@
+form{
+    text-align: center;
+}
+.lable{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px;
+   
+    font-size: 20px;
+}
+div{
+    text-align: center;
+    margin-top: 10px;
+}
+input{
+    margin: auto;
+    width:450px;
+    border-radius: 10px;
+    text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn{
+    padding: 10px;
+    margin: 23px;
+}
+

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { add_new_follow_api, add_new_friend, all_likes_count, all_users_api, all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_update, blog_image_upload, delete_comment_by_id, delete_user_url, do_like_post, do_post_comment, get_all_comments_blog_id, get_all_follows_api, get_all_friends_userId, get_all_likes_blog, get_blogs_by_user, login_user_url, user_add_url } from './ContantsApi';
+import { add_new_follow_api, add_new_friend, all_likes_count, all_users_api, all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_update, blog_image_upload, delete_comment_by_id, delete_follow_by_id_api, delete_friend_by_id_api, delete_user_url, do_like_post, do_post_comment, get_all_comments_blog_id, get_all_follows_api, get_all_friends_userId, get_all_likes_blog, get_blogs_by_user, get_user_by_its_username_api, login_user_url, user_add_url } from './ContantsApi';
 import { catchError, throwError } from 'rxjs';
 
 
@@ -113,6 +113,20 @@ export class DataservicesService {
   public getallfollowsbyuserid(id:any){
     let url=get_all_follows_api+"/"+`${id}`;
     return this.http.get(url).pipe(catchError(this.handleError))
+  }
+
+  public removeFriendById(id:any){
+    let url=delete_friend_by_id_api+"/"+`${id}`;
+    return this.http.get(url).pipe(catchError(this.handleError))
+  }
+  public removefollowbyid(id:any){
+    let url=delete_follow_by_id_api+"/"+`${id}`;
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
+
+  public getUserByItsName(name:any){
+    let url=get_user_by_its_username_api+"/"+`${name}`;
+    return this.http.get(url).pipe(catchError(this.handleError));
   }
   
 

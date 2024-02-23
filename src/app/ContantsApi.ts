@@ -23,4 +23,7 @@ export const add_new_friend=environment.apiUrl+"/addFriend";
 export const get_all_friends_userId=environment.apiUrl+"/allfriends";
 export const add_new_follow_api=environment.apiUrl+"/addFollow";
 export const get_all_follows_api=environment.apiUrl+"/allfollows";
+export const delete_friend_by_id_api=environment.apiUrl+"/deleteFriendbyId";
+export const delete_follow_by_id_api=environment.apiUrl+"/deleteFollowById";
+export const get_user_by_its_username_api=environment.apiUrl+"/getUserbyUsername";
 

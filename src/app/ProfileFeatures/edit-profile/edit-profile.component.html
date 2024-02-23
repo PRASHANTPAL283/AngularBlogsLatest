@@ -1,1 +1,31 @@
-<p>edit-profile works!</p>
+<form [formGroup]="registerModel">
+    <div>
+    <label  class="lable">Enter The Username</label>
+    <input class="form-control" type="text" formControlName="username">
+</div>
+<div>
+    <label  class="lable">Enter The Email</label>
+    <input class="form-control" type="text" formControlName="email">
+</div>
+<div>
+    <label  class="lable">Enter The PhoneNumber</label>
+    <input  class="form-control" type="number" formControlName="phoneNumber">
+</div>
+<div>
+    <label  class="lable">Enter The Password</label>
+    <input  class="form-control" type="password" formControlName="password">
+</div>
+<div>
+    <label  class="lable">Choose the profile picture</label>
+<input class="form-control" #file (change)="choosefile($event)"  type="file" placeholder="choose the profile pic">
+</div>
+<div *ngIf="imagePreviewUrl && imagePreviewUrl !== ''" style="margin: 10px; text-align: center;">
+    <img style="width:150px;height:150px;border-radius: 25px;" [src]="imagePreviewUrl">
+    <button style="margin: 10px;padding: auto;border-radius: 50%;" (click)="resetfile()" title="remove file" class="btn btn-primary">X</button>
+</div>
+<div>
+    <button (click)="UpdateUser()" class="btn btn-success">Update</button>
+</div>
+
+
+</form>
