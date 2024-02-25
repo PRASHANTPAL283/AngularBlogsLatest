@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./chats.component.css']
 })
 export class ChatsComponent {
+  ngOnInit(){
+    console.log("user enters the component");
+  }
+  ngOnDestroy(){
+    console.log("user exit the component");
+  }
 
 }
