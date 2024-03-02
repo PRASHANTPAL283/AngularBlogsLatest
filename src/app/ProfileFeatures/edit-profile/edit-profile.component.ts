@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { DataservicesService } from 'src/app/dataservices.service';
 import { environment } from 'src/environments/environment';
 
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class EditProfileComponent {
 
-  constructor(public fb:FormBuilder,public service:DataservicesService){
+  constructor(public fb:FormBuilder,public service:DataservicesService, public toast:ToastrService){
 
   }
   currentUser:any;
@@ -39,10 +40,10 @@ export class EditProfileComponent {
           this.currentUser=val;
         },
         error:(err:any)=>{
-          alert('error occurred in updating user'+err.message);
+          this.toast.warning('error occurred in updating user'+err.message);
         },
         complete:()=>{
-          alert('user updated success');
+          this.toast.success('user updated success');
           this.resetfile();
           this.registerModel.patchValue({ 
             userId:this.currentUser.userId,
@@ -68,7 +69,7 @@ export class EditProfileComponent {
           })
         },
         error:(err:any)=>{
-          alert('error occurred in uploading image')
+          this.generateErrorMessage(err)
         },
         complete:()=>{
           this.service.addNewUser(this.registerModel.value).subscribe({ 
@@ -77,10 +78,10 @@ export class EditProfileComponent {
               this.currentUser=val;
             },
             error:(err:any)=>{
-              alert('error occurred in updating user'+err.message);
+              this.generateErrorMessage(err)
             },
             complete:()=>{
-              alert('user updated success');
+              this.toast.success('user updated success');
               this.resetfile();
               this.registerModel.patchValue({ 
                 userId:this.currentUser.userId,
@@ -103,6 +104,10 @@ export class EditProfileComponent {
 
     }
 
+  }
+  generateErrorMessage(val:any){
+    let t:any=(JSON.parse(val.message));
+    this.toast.error(t);
   }
 
   registerModel=this.fb.group({ 

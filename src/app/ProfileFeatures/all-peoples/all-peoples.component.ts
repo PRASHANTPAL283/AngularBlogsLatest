@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { DataservicesService } from 'src/app/dataservices.service';
 import { FollowModel } from 'src/app/follow-model';
 import { FriendEntity } from 'src/app/friend-entity';
@@ -13,7 +14,7 @@ export class AllPeoplesComponent {
 
    apiUrl=environment.apiUrl;
 
-  constructor(public service:DataservicesService){
+  constructor(public service:DataservicesService, public toast:ToastrService){
 
   }
   currentUser:any;
@@ -100,15 +101,19 @@ export class AllPeoplesComponent {
         console.log(val)
       },
       error:(err:any)=>{
-        alert(err.message)
+        this.generateErrorMessage(err)
       },
       complete:()=>{
-        alert('follow added successfully');
+        this.toast.success('follow added successfully');
         this.getallfollows();
       }
     })
     
 
+  }
+  generateErrorMessage(val:any){
+    let t:any=(JSON.parse(val.message));
+    this.toast.error(t);
   }
 
   addFriend(data:any){
@@ -127,10 +132,10 @@ export class AllPeoplesComponent {
         console.log(val);
       },
       error:(err:any)=>{
-        alert("error occurred during process "+err.message);
+        this.generateErrorMessage(err)
       },
       complete:()=>{
-        alert("friend added successfully");
+        this.toast.success("friend added successfully");
         this.getallfriends();
       }
     })

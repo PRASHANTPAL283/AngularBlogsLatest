@@ -16,6 +16,7 @@ import { EditProfileComponent } from './ProfileFeatures/edit-profile/edit-profil
 
 const routes: Routes = [
   {path:'blogs',component:Comp1Component},
+  {path:'',redirectTo:'blogs',pathMatch:'full'},
   {path:'myblogs',component:Comp2Component,canActivate:[routerGuardGuard]},
   {path:'createBlogs',component:Comp3Component,canActivate:[routerGuardGuard]},
   {path:'createBlogs/:data',component:Comp3Component,canActivate:[routerGuardGuard]},

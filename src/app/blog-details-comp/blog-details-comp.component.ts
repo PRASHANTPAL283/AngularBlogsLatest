@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { CommentEntity } from '../comment-entity';
 import { LikeEntity } from '../like-entity';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-blog-details-comp',
@@ -13,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class BlogDetailsCompComponent {
 
-  constructor(public router:ActivatedRoute, public service:DataservicesService, public fb:FormBuilder){
+  constructor(public router:ActivatedRoute, public service:DataservicesService, public fb:FormBuilder, public toast:ToastrService){
 
   }
   apiUrl=environment.apiUrl;
@@ -76,10 +77,10 @@ export class BlogDetailsCompComponent {
         
       },
       error:(err:any)=>{
-        alert('error occurred');
+        this.generateErrorMessage(err)
       },
       complete:()=>{
-        alert("comment deleted successfully");
+        this.toast.success("comment deleted successfully");
         this.getallComments(this.BlogDetails.blogId);
       }
     })
@@ -97,7 +98,7 @@ export class BlogDetailsCompComponent {
          
         },
         error:(err:any)=>{
-          console.log(JSON.parse(err.message));
+          this.generateErrorMessage(err)
         },
         complete:()=>{
           this.getalllikes(this.BlogDetails.blogId);
@@ -183,10 +184,13 @@ export class BlogDetailsCompComponent {
        
       },
       error:(err:any)=>{
-        console.log(err.message);
+        let t:any=(JSON.parse(err.message).message)
+          
+          this.toast.warning(t)
+        
       },
       complete:()=>{
-        alert("comment added successfully");
+        this.toast.success("comment added successfully");
         this.getallComments(this.BlogDetails.blogId);
         this.commentModel.reset();
 
@@ -206,6 +210,11 @@ flag=true;
   }
 })
 return flag;
+  }
+
+  generateErrorMessage(val:any){
+    let t:any=(JSON.parse(val.message));
+    this.toast.error(t);
   }
 
   
@@ -234,13 +243,13 @@ return flag;
 
       },
       error:(err:any)=>{
-        console.log(err.message);
+        this.generateErrorMessage(err)
       },
       complete:()=>{
         if(flag==true){
-        alert("you successfully liked the blog");
+        this.toast.success("you successfully liked the blog");
       }else{
-        alert("you successfully unlike a blog");
+        this.toast.success("you successfully unlike a blog");
       }
         this.getalllikes(this.BlogDetails.blogId);
        

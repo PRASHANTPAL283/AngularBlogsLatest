@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { add_new_follow_api, add_new_friend, all_likes_count, all_users_api, all_users_url, blog_add_url, blog_delete_url, blog_get_url, blog_image_update, blog_image_upload, delete_comment_by_id, delete_follow_by_id_api, delete_friend_by_id_api, delete_user_url, do_like_post, do_post_comment, get_all_comments_blog_id, get_all_follows_api, get_all_friends_userId, get_all_likes_blog, get_all_messages_api, get_blogs_by_user, get_user_by_its_username_api, login_user_url, send_new_message_api, user_add_url } from './ContantsApi';
-import { catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -151,4 +151,19 @@ export class DataservicesService {
     // Return an observable with a user-facing error message.
     return throwError(() => new Error(JSON.stringify(error.error)));
   }
+
+  notificationModel:any=new BehaviorSubject<any>({});
+  setTheNotificationModel(val:any){
+    this.notificationModel.next(val);
+  }
+  getTheNotificationModel(){
+    return this.notificationModel.asObservable();
+  }
+
 }
+
+
+//behavious subject 
+
+
+

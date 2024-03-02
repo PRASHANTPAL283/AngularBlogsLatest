@@ -30,6 +30,7 @@ export class Comp1Component {
 
 
   }
+  
 
   gotoBlogs(id:any){
     console.log(id);

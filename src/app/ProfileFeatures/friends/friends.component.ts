@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { DataservicesService } from 'src/app/dataservices.service';
 import { environment } from 'src/environments/environment';
 
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FriendsComponent {
 
-  constructor(public service:DataservicesService){
+  constructor(public service:DataservicesService, public toast:ToastrService){
 
   }
   ngOnInit(){
@@ -22,6 +23,11 @@ export class FriendsComponent {
   allfriends:any=[];
   allusers:any=[];
   apiUrl=environment.apiUrl;
+
+  generateErrorMessage(val:any){
+    let t:any=(JSON.parse(val.message));
+    this.toast.error(t);
+  }
 
   getUserId():any{
     let id:any=null;
@@ -60,9 +66,10 @@ export class FriendsComponent {
         console.log(val)
       },
       error:(err:any)=>{
-        alert('error occurred while removing friend'+err.message);
+        this.generateErrorMessage(err)
       },
       complete:()=>{
+        this.toast.success('unfriend success')
         this.getUserId();
 
       }

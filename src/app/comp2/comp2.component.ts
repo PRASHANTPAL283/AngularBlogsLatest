@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataservicesService } from '../dataservices.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-comp2',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class Comp2Component {
 
-  constructor(public service:DataservicesService, public router:Router){
+  constructor(public service:DataservicesService, public router:Router, public toast:ToastrService){
 
   }
   ngOnInit(){
@@ -21,6 +22,10 @@ export class Comp2Component {
     this.router.navigate(['createBlogs',data]);
 
   }
+  generateErrorMessage(val:any){
+    let t:any=(JSON.parse(val.message));
+    this.toast.error(t);
+  }
   deleteBlogById(id:any){
     let f:any=null;
     this.service.deleBlogById(id).subscribe({ 
@@ -29,10 +34,10 @@ export class Comp2Component {
 
       },
       error:(err:any)=>{
-        alert("error occurred")
+        this.generateErrorMessage(err)
       },
       complete:()=>{
-        alert("data deleted successfull");
+        this.toast.success("data deleted successfull");
         this.getallBlogsByUser();
       }
     })
@@ -46,7 +51,7 @@ export class Comp2Component {
 
       },
       error:(err:any)=>{
-        alert("error occurred while fetching blogs")
+        this.generateErrorMessage(err)
       }
     })
   }

@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataservicesService } from '../dataservices.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-component',
@@ -10,7 +11,7 @@ import { DataservicesService } from '../dataservices.service';
 })
 export class RegisterComponentComponent {
 
-  constructor(public fb:FormBuilder,public router:Router,public service:DataservicesService){
+  constructor(public fb:FormBuilder,public router:Router,public service:DataservicesService,public toast:ToastrService){
 
   }
 
@@ -46,12 +47,12 @@ export class RegisterComponentComponent {
           console.log(val);
         },
         error:(err:any)=>{
-          this.message=err.message;
-          this.myFunction2();
+
+         this.generateErrorMessage(err)
         },
         complete:()=>{
           this.message="Register Susccessfully";
-          this.myFunction();
+          this.toast.success(this.message)
           this.registerModel.reset();
           this.router.navigate(['login'])
         }
@@ -60,30 +61,28 @@ export class RegisterComponentComponent {
     }
     else{
       this.message="password are not matching ";
-      this.myFunction2();
+      this.toast.warning(this.message)
       this.registerModel.reset();
     }
   }
   @ViewChild('snackBar')snackBar:any|ElementRef;
 
-
-  myFunction(){
-  this.snackBar.nativeElement.className="show"
-  this.snackBar.nativeElement.style.backgroundColor="green";
-    this.snackBar.nativeElement.style.color="white"
-  console.log(this.snackBar.nativeElement.className)
+  generateErrorMessage(val:any){
   
-    setTimeout(() =>{  this.snackBar.nativeElement.className = ""; }, 4000);
+    let t:any=(JSON.parse(val.message));
+    if(t?.email!==null&& t?.email!==undefined&&t?.email!==''){
+      this.toast.warning(t.email)
+    }
+    else if(t?.username!==null&&t?.username!==undefined&&t?.username!==''){
+      this.toast.warning(t.username)
+    }
+    else{
+      this.toast.error(t?.message)
+    }
   }
 
-  myFunction2(){
-    this.snackBar.nativeElement.className="show"
-    this.snackBar.nativeElement.style.backgroundColor="red";
-    this.snackBar.nativeElement.style.color="white"
-  console.log(this.snackBar.nativeElement.className)
-  
-    setTimeout(() =>{  this.snackBar.nativeElement.className = ""; }, 4000);
-  }
+
+ 
 
   checkDate(){
     let date=new Date("2024-02-07 20:00:41.417");

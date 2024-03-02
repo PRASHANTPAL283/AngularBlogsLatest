@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DataservicesService } from '../dataservices.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-comp3',
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./comp3.component.css']
 })
 export class Comp3Component {
-constructor(private fb:FormBuilder, public service:DataservicesService, public router:ActivatedRoute){
+constructor(private fb:FormBuilder, public service:DataservicesService, public router:ActivatedRoute, public toast:ToastrService){
 }
 formData:FormData=new FormData();
 
@@ -49,10 +50,10 @@ submitData(){
         
       },
       error:(err:any)=>{
-        console.log(JSON.parse(err.message))
+        this.generateErrorMessage(err)
       },
       complete:()=>{
-        alert("blog posted successfully");
+        this.toast.success("blog posted successfully");
         this.BlogsModel.reset();
         this.resetfile();
       }
@@ -67,7 +68,7 @@ submitData(){
       })
     },
     error:(err:any)=>{
-      console.log(err.message)
+      this.generateErrorMessage(err)
     },
     complete:()=>{
       console.log("file added successfully");
@@ -77,10 +78,10 @@ submitData(){
           
         },
         error:(err:any)=>{
-          console.log(JSON.parse(err.message));
+          this.generateErrorMessage(err)
         },
         complete:()=>{
-          alert("blog posted successfully");
+          this.toast.success("blog posted successfully");
           this.BlogsModel.reset();
           this.resetfile();
         }
@@ -109,7 +110,8 @@ BlogsModel=this.fb.group({
   subject:['',Validators.required],
   description:['',Validators.required],
   imageUrl:[''],
-  imageId:['']
+  imageId:[''],
+  date:['']
 
 })
 
@@ -121,10 +123,10 @@ updateBlog(){
         
       },
       error:(err:any)=>{
-        console.log(JSON.parse(err.message))
+        this.generateErrorMessage(err)
       },
       complete:()=>{
-        alert("blog posted successfully");
+        this.toast.success("blog posted successfully");
         this.BlogsModel.reset();
         this.resetfile();
       }
@@ -139,7 +141,7 @@ updateBlog(){
       })
     },
     error:(err:any)=>{
-      console.log(err.message)
+      this.generateErrorMessage(err)
     },
     complete:()=>{
       console.log("file added successfully");
@@ -149,10 +151,10 @@ updateBlog(){
           
         },
         error:(err:any)=>{
-          console.log(JSON.parse(err.message));
+          this.generateErrorMessage(err)
         },
         complete:()=>{
-          alert("blog updated successfully");
+          this.toast.success("blog updated successfully");
           this.BlogsModel.reset();
           this.resetfile();
         }
@@ -177,11 +179,17 @@ this.updateBlogModel=null;
     subject:this.updateBlogModel.subject,
     description:this.updateBlogModel.description,
     imageId:this.updateBlogModel.imageId,
-    imageUrl:this.updateBlogModel.imageUrl
+    imageUrl:this.updateBlogModel.imageUrl,
+    date:this.updateBlogModel.date
   })
  })
  this.imagePreviewUrl=environment.apiUrl+this.updateBlogModel.imageUrl;
     
+  }
+
+  generateErrorMessage(val:any){
+    let t:any=(JSON.parse(val.message));
+    this.toast.error(t);
   }
   
 

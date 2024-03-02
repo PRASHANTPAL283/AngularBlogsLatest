@@ -20,6 +20,8 @@ import { AllPeoplesComponent } from './ProfileFeatures/all-peoples/all-peoples.c
 import { ChatsComponent } from './ProfileFeatures/chats/chats.component';
 import { FollowersComponent } from './ProfileFeatures/followers/followers.component';
 import { EditProfileComponent } from './ProfileFeatures/edit-profile/edit-profile.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -46,7 +48,14 @@ import { EditProfileComponent } from './ProfileFeatures/edit-profile/edit-profil
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-left',
+      preventDuplicates: false,
+    }
+    ),
+    BrowserAnimationsModule,
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:DataInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
