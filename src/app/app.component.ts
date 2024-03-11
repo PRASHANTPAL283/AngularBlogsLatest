@@ -12,8 +12,16 @@ environment
 })
 export class AppComponent {
   title = 'code030221';
+   currentUser:any;
+   roles:any='';
+   showFlag:any=false;
+   toggle(){
+    this.showFlag=!this.showFlag;
+   }
 
   constructor(public service:MessageServicesService, public se:DataservicesService){
+    this.date=new Date();
+    this.roles=null;
     console.log(environment.production)
     this.service.connect();
     let user:any=sessionStorage.getItem("user");
@@ -23,13 +31,36 @@ export class AppComponent {
       data=JSON.stringify(data);
       sessionStorage.setItem("user",data);
     }
+    else{
+      this.se.getUserByItsName(loginModel.username).subscribe({ 
+        next:(val:any)=>{
+          this.currentUser=val;
+          this.getRoles(val)
+        }
+      })
+    }
    
 
+  }
+
+  getRoles(val:any){
+    let str='';
+  val.userRolesList.forEach((val:any)=>{
+    str=str+val.roleName+",";
+    
+  })
+  this.roles=str;
+  this.roles=str.substring(0,this.roles.length-1)
   }
   showmessage:any=false;
   message:any=null;
   datare:any=null;
   ngOnInit(){
+    if(this.currentUser==null||this.currentUser.username=='guest'||this.currentUser==undefined){
+      this.getCurrentUser();
+     
+    }
+  
     this.se.getTheNotificationModel().subscribe({
       next:(val:any)=>{
        
@@ -64,9 +95,22 @@ export class AppComponent {
   
     
   }
+  date:any=null;
 
   public connecttochatSocket(){
     this.service.connect();
+}
+apiUrl=environment.apiUrl;
+
+public getCurrentUser(){
+  this.se.getCurrentUser().subscribe({ 
+    next:(val:any)=>{
+      this.currentUser=val;
+      console.log(this.currentUser)
+      this.getRoles(this.currentUser)
+    },
+
+  })
 }
 
 showMessageMethod(val:any){
@@ -86,4 +130,6 @@ showMessageMethod(val:any){
     
   }
 }
+
+
 }

@@ -27,5 +27,29 @@ a{
     text-transform: capitalize;
 
 }
+.card{
+    width:300px;
+    height:auto;
+    border-radius: 20px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 1;
+    position: fixed;
+    left:80%;
+    right:20%;
+    top:8%;
+    margin-top: 1px;
+}
+.list-group-item:hover{
+    background-color: rgb(248, 243, 243);
+    
+}
+.list-group-item{
+    font-size: 16px;
+    border: 2px solid rgb(202, 199, 199);
+   
+}
+img{
+    margin: 5px;
+}
 
 

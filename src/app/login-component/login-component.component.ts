@@ -55,9 +55,11 @@ export class LoginComponentComponent {
     else{
      this.service.doLoginUser(this.loginModel?.value).subscribe({ 
         next:(val:any)=>{
+          this.service.setCurrentUser(val);
           let result:any={username:val.username,password:this.getPass()?.value,userId:val.userId}
           console.log(result)
           this.myuser=result
+
           result=JSON.stringify(result);
           sessionStorage.setItem("user",result);
         },
@@ -77,6 +79,17 @@ export class LoginComponentComponent {
         }
       })
     }
+  }
+
+
+  getFights(){
+    this.service.getFlightsData().subscribe({
+      next:(val:any)=>{
+        console.log(val[0].body)
+      }
+    })
+
+
   }
 
   

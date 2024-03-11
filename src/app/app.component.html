@@ -26,9 +26,26 @@
     <li class="nav-item">
       <a routerLink="register" routerLinkActive #a="routerLinkActive" [ngClass]="a.isActive==true ?'nav-link active':'nav-link'" >Register</a>
     </li>
+    <li class="nav-item">
+     <img  (click)="toggle()" style="width:40px;height:40px;border-radius: 50%;" [src]="apiUrl+currentUser?.imageUrl">
+    </li>
   </ul>
  
 </nav>
+<div *ngIf="showFlag"class="card">
+  <ul style="border-radius: 20px;text-align: center;" class="list-group">
+    <li class="list-group-item">Username:{{currentUser.username}}</li>
+    <li class="list-group-item">Email:{{currentUser.email}}</li>
+    <li class="list-group-item">Roles:{{roles}}</li>
+    <li class="list-group-item">Last Login:{{ date| date:'MMM d, y, h:mm:ss a'}}</li>
+
+  
+
+    <li class="list-group-item">logOut</li>
+   
+  </ul>
+
+</div>
 
 
 <router-outlet></router-outlet>

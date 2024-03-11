@@ -16,6 +16,10 @@ export class DataservicesService {
     .pipe(catchError(this.handleError));
 
   }
+  public getFlightsData(){
+    let url:any="http://localhost:9002/getData";
+    return this.http.get(url).pipe(catchError(this.handleError));
+  }
 
   public getallblogs(){
     return this.http.get(blog_get_url)
@@ -153,11 +157,20 @@ export class DataservicesService {
   }
 
   notificationModel:any=new BehaviorSubject<any>({});
+  currentUserModel:any=new BehaviorSubject<any>({});
   setTheNotificationModel(val:any){
     this.notificationModel.next(val);
   }
   getTheNotificationModel(){
     return this.notificationModel.asObservable();
+  }
+
+  setCurrentUser(data:any){
+    this.currentUserModel.next(data);
+
+  }
+  getCurrentUser(){
+    return this.currentUserModel.asObservable();
   }
 
 }
